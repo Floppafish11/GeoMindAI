@@ -1,0 +1,11 @@
+{
+  "geode": "5.0.0",
+  "version": "0.1.0",
+  "id": "floppafish.geomindai",
+  "name": "GeoMind AI",
+  "developer": "Floppafish11",
+  "description": "Classic-mode route research and macro planning tools for Geometry Dash.",
+  "repository": "https://github.com/Floppafish11/GeoMindAI",
+  "tags": ["gameplay", "utility"],
+  "gd": { "win": "2.2081" }
+}
