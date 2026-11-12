@@ -17,7 +17,7 @@ jobs:
       - name: Build Geode mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: latest
+          sdk: 5.11.2
           target: Win64
 
       - name: Upload Geode package
