@@ -1,28 +1,39 @@
 # GeoMind AI
 
-A Geode mod project for Geometry Dash 2.2081, classic mode only.
+Geode mod for Geometry Dash **2.2081**, **classic mode only**.
 
-## Current status
+## Current build: route capture and replay foundation
 
-This is the initial project scaffold. It adds a GeoMind AI entry point to the main menu. Automated gameplay, route discovery, and XDBot macro export are not implemented yet.
+This version adds:
+- A GeoMind AI button on the main menu.
+- Pause-menu controls to record a route, save it, replay it, and stop replay.
+- Input capture through the game's PlayerObject button interface.
+- Level-ID validation so a saved route cannot be replayed on another level.
+- Route data stored as JSON in Geode's mod save directory (`last-route.gma`).
 
-## Planned system
+A replay sends the captured press/release events back through the game's PlayerObject interface. This is a playback foundation, not yet an autonomous solver.
 
-- Classic game modes: cube, ship, ball, UFO, wave, robot, spider and swing.
-- Classify level objects, portals, orbs and pads.
-- Run repeatable route trials and score candidate paths by completion and consistency.
-- Store route data separately from playback.
-- Validate exported macros against the target macro format before enabling export.
+## Not implemented yet
 
-## Compatibility
+- Autonomous route discovery from a blank level.
+- High-speed multi-trial search or a genetic/heuristic optimizer.
+- Full semantic classification of every portal, orb, pad, trigger, and mode transition.
+- Verified XDBot macro export. XDBot's public repository does not include its serialization source, so no unsupported file format is being guessed.
 
-- Geometry Dash: 2.2081
-- Geode SDK: 5.x
+## Build target
 
-## Build
+- Geometry Dash 2.2081
+- Geode SDK 5.11.2
+- Windows x64
 
-A GitHub Actions workflow will build the mod for Windows and upload the compiled Geode package as an artifact.
+The GitHub Actions workflow builds and uploads a `.geode` artifact on pushes to `main`.
 
-## XDBot compatibility
+## Use
 
-XDBot's public README lists macro import support and a Path Finder feature, but a verified specification for its native macro serialization is not available here. Export is not advertised as working until that format can be tested against a real XDBot macro.
+1. Install the compiled `.geode` into your Geode mods folder.
+2. Open a level and pause.
+3. Select **Record Route**, resume and play.
+4. Pause and select **Stop + Save**.
+5. Replay the saved route from the same level using **Replay Route**.
+
+The route file is stored in the mod's Geode save directory. This first implementation is intended for testing the capture/replay pipeline; it does not claim to find a level solution by itself.
